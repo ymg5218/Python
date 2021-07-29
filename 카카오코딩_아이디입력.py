@@ -36,13 +36,10 @@ def recheckDot(new_id):  # 온점이 처음이나 마지막에 위치하면 제�
     return new_id  # 수정된 아이디 반환
 
 
-def checkSpace(new_id):
-    new_id = re.sub(" ", "", new_id)  # 공백 삭제
-    return new_id
-
 
 def checkLong(new_id):  # 문자열이 16자 이상이면 실행
     new_id = new_id[:15]  # 15까지 자름
+    new_id = recheckDot(new_id)
     return new_id
 
 
@@ -55,7 +52,6 @@ def checkShort(new_id):  # 문자열이 2자 이하이면 실행
 
 def plusA(new_id):
     new_id = new_id.replace(" ", "a")
-    print(new_id)
     return new_id
 
 
@@ -64,8 +60,6 @@ id = createID()  # 아이디 생성 함수 실행
 id = checkDot(id)  # 연속된 온점 검사 함수 실행 - 매개변수 : 규칙 의거 수정 아이디
 
 id = recheckDot(id)  # 처음과 마지막 온점 검사 함수 실행 - 매개변수 : 연속된 중복온점 수정 아이디
-
-id = checkSpace(id)  # 공백 - a 치환 함수 실행 - 매개변수 : 최종 온점 수정 아이디
 
 if(len(id) > 15):  # 최종 수정 아이디의 길이가 16이상일 때 실행
     id = checkLong(id)  # 규격 외 길이 제거 함수 실행 - 매개변수 : 최종 규칙수정 아이디
